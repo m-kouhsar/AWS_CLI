@@ -21,4 +21,4 @@ bash aws.copy.sh aws.args
 `
 
 
-If you set the `Source` variable to a directory, all files in that directory will be copied to `Destination`.
+The `Source` variable can be a full path of single file or a directory. If you set the `Source` variable to a directory, all files in that directory will be copied to `Destination`.
