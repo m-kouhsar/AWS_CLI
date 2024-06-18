@@ -1,0 +1,8 @@
+
+Source=/lustre/projects/Research_Project-T111004/Morteza/logs
+Destination=Scripts
+
+Bucket_Name=183-cmh-alzheimers-psychosis
+Access_Key=229dae2712c99a71716a
+Secret_Key=BweckUI77v5vx5gQXv2qvwDLXesnO33Qi4cBahI3
+Endpoint_URL=s3-uoe.uds.exeter.ac.uk
