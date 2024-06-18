@@ -7,7 +7,7 @@ These scripts are writen to configure and copy data from your local storage to A
 conda install -c conda-forge awscli
 `
 ## Configuration
-Set the variable in aws.args file and then run the following command\n:
+Set the variable in aws.args file and then run the following command:
 `
 bash aws.config.sh aws.args
 `
