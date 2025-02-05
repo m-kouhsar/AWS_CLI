@@ -29,14 +29,14 @@ fi
 if [[ -d $Source ]]
 then
 
-    aws s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive
+    aws s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --checksum-algorithm SHA256
     
     
 elif [[ -f $Source ]]
 then
 
     file_name=$( basename $Source )
-    aws s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name}
+    aws s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --checksum-algorithm SHA256
     
 else
 
