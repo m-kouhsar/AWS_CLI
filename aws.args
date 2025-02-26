@@ -1,6 +1,6 @@
 
-Source=./My_Data
-Destination=/MyStorage/My_Cloud_Backups
+Source=./test.txt
+Destination=My_backup
 
 Bucket_Name=bucket_name1
 Access_Key=key1
