@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A Research_Project1 # research project to submit under.
+#SBATCH -A Research_Project-MRC164847 # research project to submit under.
 #SBATCH --export=ALL # export all environment variables to the batch job.
 #SBATCH -D . # set working directory to .
 #SBATCH -p mrcq # submit to the parallel test queue
@@ -8,7 +8,7 @@
 #SBATCH --ntasks-per-node=16 # specify number of processors.
 #SBATCH --mail-type=END # send email at job completion
 #SBATCH --mail-user=m.kouhsar@exeter.ac.uk # email address
-#SBATCH --job-name=SalmonIndex
+#SBATCH --job-name=aws_download
 
 source $1 
 
@@ -27,7 +27,7 @@ then
 fi
 
 
-not_exist=$(aws s3api head-object --bucket $Bucket_Name --key $Source >/dev/null 2>1; echo $?)
+not_exist=$(aws s3api head-object --bucket $Bucket_Name --key $Source >/dev/null 2>&1; echo $?)
 if [ $not_exist != 0 ]
 then
     # There is no $Source object on cloud. So, we assume that $Source is a directory

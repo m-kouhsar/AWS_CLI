@@ -8,7 +8,7 @@
 #SBATCH --ntasks-per-node=16 # specify number of processors.
 #SBATCH --mail-type=END # send email at job completion
 #SBATCH --mail-user=m.kouhsar@exeter.ac.uk # email address
-#SBATCH --job-name=SalmonIndex
+#SBATCH --job-name=aws_upload
 
 source $1 
 
