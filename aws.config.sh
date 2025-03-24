@@ -14,4 +14,3 @@ source $1
 
 aws configure set aws_access_key_id $Access_Key
 aws configure set aws_secret_access_key $Secret_Key
-aws configure set endpoint_url https://${Endpoint_URL}

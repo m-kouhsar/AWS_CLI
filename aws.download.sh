@@ -31,8 +31,8 @@ not_exist=$(aws s3api head-object --bucket $Bucket_Name --key $Source >/dev/null
 if [ $not_exist != 0 ]
 then
     # There is no $Source object on cloud. So, we assume that $Source is a directory
-    aws s3 cp s3://${Bucket_Name}/${Source} $Destination --recursive
+    aws --endpoint-url=https://${Endpoint_URL} s3 cp s3://${Bucket_Name}/${Source} $Destination --recursive
 else   
-    aws s3 cp s3://${Bucket_Name}/${Source} $Destination
+    aws --endpoint-url=https://${Endpoint_URL} s3 cp s3://${Bucket_Name}/${Source} $Destination
 fi
 
