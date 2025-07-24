@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A Research_Project1 # research project to submit under.
+#SBATCH -A Research_Project-MRC164847 # research project to submit under.
 #SBATCH --export=ALL # export all environment variables to the batch job.
 #SBATCH -D . # set working directory to .
 #SBATCH -p mrcq # submit to the parallel test queue
@@ -29,14 +29,19 @@ fi
 if [[ -d $Source ]]
 then
 
-    aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive
+    echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --cli-read-timeout 0"
+
+    aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --cli-read-timeout 0
     
     
 elif [[ -f $Source ]]
 then
 
     file_name=$( basename $Source )
-    aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name}
+    
+    echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --cli-read-timeout 0"
+    
+    aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --cli-read-timeout 0
     
 else
 
