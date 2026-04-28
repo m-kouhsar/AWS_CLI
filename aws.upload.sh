@@ -29,9 +29,9 @@ fi
 if [[ -d $Source ]]
 then
 
-    echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --cli-read-timeout 0"
+    echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --no-progress --cli-read-timeout 0"
 
-    aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --cli-read-timeout 0
+    aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --no-progress --cli-read-timeout 0
     
     
 elif [[ -f $Source ]]
@@ -39,9 +39,9 @@ then
 
     file_name=$( basename $Source )
     
-    echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --cli-read-timeout 0"
+    echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --no-progress --cli-read-timeout 0"
     
-    aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --cli-read-timeout 0
+    aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --no-progress --cli-read-timeout 0
     
 else
 
