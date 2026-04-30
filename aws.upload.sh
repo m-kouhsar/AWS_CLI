@@ -28,18 +28,33 @@ fi
 
 if [[ -d $Source ]]
 then
-
+    echo "##########################################################################################################################################"
+    echo "Source is a directory. The following command will be used to upload a copy of all files and folders in '${Source}' to '${Bucket_Name}/${Destination}'"
+    echo ""
     echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --no-progress --cli-read-timeout 0"
+    echo ""
+    echo "List of all source files:"
+    echo ""
+    echo "$(find $Source -type f -printf "%p\t%s\n" | numfmt --to=iec --field=2)" 
+    echo ""
+    echo "##########################################################################################################################################"
+    echo "Uploading..."
+
 
     aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --no-progress --cli-read-timeout 0
     
     
 elif [[ -f $Source ]]
 then
+    echo "##########################################################################################################################################"
+    echo "Source is a single file. The following command will be used to upload a copy of '${Source}' to '${Bucket_Name}/${Destination}'"
+    echo ""
+    echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination} --recursive --no-progress --cli-read-timeout 0"
+    echo ""
+    echo "##########################################################################################################################################"
+    echo "Uploading..."
 
     file_name=$( basename $Source )
-    
-    echo "aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --no-progress --cli-read-timeout 0"
     
     aws --endpoint-url=https://${Endpoint_URL} s3 cp $Source s3://${Bucket_Name}/${Destination}/${file_name} --no-progress --cli-read-timeout 0
     
